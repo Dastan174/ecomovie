@@ -1,0 +1,20 @@
+.container {
+  padding-block: 40px;
+  .mainContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      span {
+        padding: 8px;
+        border-radius: 50%;
+        background: #04152d;
+        font-size: 18px;
+      }
+    }
+  }
+}
