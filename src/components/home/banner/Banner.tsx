@@ -2,7 +2,6 @@
 import SearchInput from "@/ui/searchInput/SearchInput";
 import scss from "./banner.module.scss";
 import { Typewriter } from "react-simple-typewriter";
-import { useState } from "react";
 
 export default function Banner() {
   const bannerQuotes = [
@@ -10,7 +9,6 @@ export default function Banner() {
     "Discover Movie Magic at TmdbMovie",
     "Get Ready for Cinematic Bliss",
   ];
-
   return (
     <div className={scss.container}>
       <div className={scss.overlay}></div>
@@ -22,7 +20,6 @@ export default function Banner() {
             typeSpeed={70}
             deleteSpeed={50}
           />
-
           <p>
             Millions of movies, TV shows and people to discover. Explore now.
           </p>

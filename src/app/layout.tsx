@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.scss";
 import Header from "@/components/mainLayout/header/Header";
 import Footer from "@/components/mainLayout/footer/Footer";
+import QueryProvider from "@/provider/QueryProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,9 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
-        <Header />
-        {children}
-        <Footer />
+        <QueryProvider>
+          <Header />
+          {children}
+          <Footer />
+        </QueryProvider>
       </body>
     </html>
   );
