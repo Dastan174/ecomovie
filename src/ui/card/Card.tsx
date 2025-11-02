@@ -28,12 +28,16 @@ const Card = ({ movie, selected }: CardProps) => {
       />
       <div className={scss.scale}>{movie.vote_average}</div>
       <div className={scss.genres}>
-        {movie.genre_ids.map((item) => (
-          <p>{item}</p>
+        {movie.genre_ids.map((item, idx) => (
+          <p key={idx}>{item}</p>
         ))}
       </div>
       <div className={scss.title}>
-        <h4>{movie.title}</h4>
+        <h4>
+          {movie.title.length > 15
+            ? movie.title.slice(0, 11) + "..."
+            : movie.title}
+        </h4>
         <p>{movie.release_date}</p>
       </div>
     </div>
