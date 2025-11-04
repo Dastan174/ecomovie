@@ -4,6 +4,8 @@ import OneMovieCarousel from "../oneMovieCarousel/OneMovieCarousel";
 import scss from "./oneMovie.module.scss";
 import { useParams } from "next/navigation";
 import { useActors } from "@/hooks/movies/actors/useActors";
+import { useSimilar } from "@/hooks/movies/similar/useSimilar";
+import { useRecommendations } from "@/hooks/movies/recommendation/useRecommendation";
 
 export default function OneMovie() {
   const { id } = useParams();
@@ -12,6 +14,16 @@ export default function OneMovie() {
     type: "movie",
     id: id,
   });
+  const { data: similarMovies, isLoading: similarLoading } = useSimilar({
+    type: "movie",
+    id: id,
+  });
+  const { data: recommendMovies } = useRecommendations({
+    type: "movie",
+    id: id,
+  });
+  console.log(recommendMovies);
+
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
@@ -76,6 +88,16 @@ export default function OneMovie() {
           data={actors}
           isLoading={isActorLoading}
           isCast={true}
+        />
+        <OneMovieCarousel
+          title="Similar Movies"
+          isSimilar={true}
+          data={similarMovies}
+        />
+        <OneMovieCarousel
+          isRecommend={true}
+          data={recommendMovies}
+          title="Recommendation Movie"
         />
       </div>
     </section>

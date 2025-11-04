@@ -1,11 +1,15 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import Card from "../card/Card";
 import scss from "./sectionCard.module.scss";
+import ToggleCategory from "../toggleCategory/ToggleCategory";
 
 interface SectionCardProps {
   title: string;
   toggle: string;
   isLoading: boolean;
   data: any;
+  isHideToggle?: boolean;
 }
 
 export default function SectionCard({
@@ -20,15 +24,29 @@ export default function SectionCard({
         <div className={scss.mainContainer}>
           <div className={scss.top}>
             <h3>{title}</h3>
-            <button>{toggle}</button>
+            <ToggleCategory />
           </div>
           <div className={scss.list}>
+            <button className={`btn-prev ${scss["btn-prev"]}`}>{"<-"}</button>
+            <button className={`btn-next ${scss["btn-next"]}`}>{"->"}</button>
             {isLoading ? (
               <h1>Loading</h1>
             ) : (
-              data.map((item, idx) => (
-                <Card selected={"movie"} key={idx} movie={item} />
-              ))
+              <Swiper
+                modules={[Navigation]}
+                navigation={{
+                  nextEl: ".btn-next",
+                  prevEl: ".btn-prev",
+                }}
+                spaceBetween={50}
+                slidesPerView={5}
+              >
+                {data.map((item, idx) => (
+                  <SwiperSlide>
+                    <Card selected={"movie"} key={idx} movie={item} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             )}
           </div>
         </div>

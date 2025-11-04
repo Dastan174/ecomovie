@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background: #fff;
+  border-radius: 20px;
+  button {
+    border-radius: 20px;
+    padding: 9px 16px;
+    border: none;
+    cursor: pointer;
+  }
+  .left {
+  }
+  .right {
+  }
+}
+.Movie {
+  background: red;
+}
+.Tv {
+  background: red;
+}

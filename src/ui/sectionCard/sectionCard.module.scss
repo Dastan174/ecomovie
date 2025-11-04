@@ -16,7 +16,29 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      overflow-x: auto;
+      position: relative;
+      .btn-next,
+      .btn-prev {
+        border-radius: 50%;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        position: absolute;
+        cursor: pointer;
+      }
+      .btn-next {
+        right: 20px;
+        top: 33%;
+        z-index: 100;
+        pointer-events: all;
+      }
+      .btn-prev {
+        left: 20px;
+        top: 33%;
+        z-index: 100;
+        pointer-events: all;
+      }
     }
   }
 }
